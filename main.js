@@ -6,7 +6,7 @@ function showError(msg) {
 
 // Searches for books and returns a promise that resolves a JSON list
 function searchForBooks(term) {
-  // TODO
+  // TODO fetch api data
   fetch('https://www.googleapis.com/books/v1/volumes?q={search terms}')
   .then(function(response) {
     console.log(response);
@@ -19,7 +19,13 @@ function searchForBooks(term) {
 
 // Generate HTML and sets #results's contents to it
 function render() {
-  // TODO
+  // TODO display something in results box
+  let resultsList = document.getElementById('results');
+  let resultsItem = document.createElement('li');
+    resultsItem.innerText = "Testing";
+    resultsList.appendChild(resultsItem);
+
 }
 
 searchForBooks();
+render();
