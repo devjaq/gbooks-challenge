@@ -6,26 +6,26 @@ function showError(msg) {
 
 // Searches for books and returns a promise that resolves a JSON list
 function searchForBooks(term) {
+  let results;
   // TODO fetch api data
-  fetch('https://www.googleapis.com/books/v1/volumes?q={search terms}')
+  fetch('https://www.googleapis.com/books/v1/volumes?q={term}')
   .then(function(response) {
-    console.log(response);
     return response.json();
   })
   .then(function(myJson) {
     console.log(JSON.stringify(myJson));
+    results = JSON.stringify(myJson);
+    render(results);
   });
 }
 
 // Generate HTML and sets #results's contents to it
-function render() {
+function render(searchResults) {
   // TODO display something in results box
   let resultsList = document.getElementById('results');
   let resultsItem = document.createElement('li');
-    resultsItem.innerText = "Testing";
+    resultsItem.innerText = searchResults;
     resultsList.appendChild(resultsItem);
-
 }
 
 searchForBooks();
-render();
