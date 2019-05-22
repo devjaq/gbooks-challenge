@@ -7,9 +7,19 @@ function showError(msg) {
 // Searches for books and returns a promise that resolves a JSON list
 function searchForBooks(term) {
   // TODO
+  fetch('https://www.googleapis.com/books/v1/volumes?q={search terms}')
+  .then(function(response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(JSON.stringify(myJson));
+  });
 }
 
 // Generate HTML and sets #results's contents to it
 function render() {
   // TODO
 }
+
+searchForBooks();
