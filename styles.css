@@ -1,3 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
 .error {
   color: red;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  /* background: #FCF4E8;
+  background: #eae3d9; */
+}
+
+#search-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh 0;
+  margin-top: 30vh;
+}
+
+input, button {
+  border: none;
+  padding: 22px 42px;
+  font-size: 1.75rem;
+  outline: none;
+
+}
+input {
+  background: #efefef;
+  border-right: none;
+  border-top-left-radius: 35px;
+  border-bottom-left-radius: 35px;
+}
+
+input:hover {
+  background: #D2D2D2;
+  transition: ease;
+  transition-duration: 150ms;
+}
+
+button {
+  border-left: none;
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+  background: #E88B08;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ce7800;
+  transition: ease;
+  transition-duration: 150ms;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  width: 100vw;
+  position: relative;
+  list-style: none;
+}
+
+.book {
+  max-width: 550px;
+  height: 210px;
+  height: 175px;
+  /* min-height: 225px; */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 18px auto;
+  border-radius: 25px;
+  border-right: none;
+  border-left: none;
+  background: #efefef;
+  overflow: hidden;
+  transition: .15s ease;
+}
+
+.book:hover {
+  background: #D2D2D2;
+  background: #e4e9da;
+  /* border-color: #6e991f; */
+  transition: 150ms ease;
+}
+
+.book:hover .info {
+  width: 400px;
+  /* position: absolute; */
+  /* padding: 20px 0; */
+  transition: 500ms ease;
+
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+img {
+  /* margin-left: 32px; */
+}
+
+.info:hover {
+  opacity: 1;
+
+  border-color: #6e991f;
+}
+
+.info {
+  /* width: 100%; */
+  /* width: 0px; */
+  width: 400px;
+  opacity: 0;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  top: 20px;
+  left: 20px;
+  border-radius: 25px;
+  padding: 20px 10px;
+  overflow: hidden;
+  position: absolute;
+  background: #e4e9da;
+}
+
+h2 {
+  max-width: 350px;
+  min-width: 200px;
+  color: #6e991f;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+h3 {
+  text-align: center;
+}
+
+h3, p {
+  color: #747474;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .book {
+    width: 400px;
+    margin: 20px;
+    border: 3px solid #dadada;
+    /* box-shadow: 0 0 10px #acb1a5; */
+  }
+
+  li {
+    width: initial;
+  }
 }
