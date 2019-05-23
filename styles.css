@@ -33,6 +33,7 @@ input {
   border-right: none;
   border-top-left-radius: 35px;
   border-bottom-left-radius: 35px;
+  color: #747474;
 }
 
 input:hover {
@@ -109,6 +110,12 @@ a {
 
 img {
   /* margin-left: 32px; */
+}
+
+img.blank {
+  min-width: 128px;
+  height: 100%;
+  background-color: #E88B08;
 }
 
 .info:hover {
