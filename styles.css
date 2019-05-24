@@ -8,36 +8,45 @@
 
 body {
   margin: 0;
-  font-family: sans-serif;
-  /* background: #FCF4E8;
-  background: #eae3d9; */
+  font-family: "Open Sans", sans-serif;
+  background: hsl(36, 16%, 94%);
+  background-image: url(funky-lines.png);
+  background-image: url(school.png);
+  /* background-blend-mode: overlay; */
+  background-blend-mode: exclusion;
+  background-blend-mode: luminosity;
+}
+
+body, input, button {
+  font-family: "Open Sans", sans-serif;
 }
 
 #search-area {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10vh 0;
   margin-top: 30vh;
 }
 
 input, button {
   border: none;
-  padding: 22px 42px;
-  font-size: 1.75rem;
+  padding: 12px 26px;
+  font-size: 1.1rem;
   outline: none;
-
+  /* border: 3px solid #dadada; */
 }
+
 input {
-  background: #efefef;
+  background: hsla(0, 0%, 96%, 1);
   border-right: none;
   border-top-left-radius: 35px;
   border-bottom-left-radius: 35px;
+  padding-right: 16px;
   color: #747474;
 }
 
-input:hover {
-  background: #D2D2D2;
+input:hover, input:focus {
+  background: hsla(0, 0%, 92%, 1);
   transition: ease;
   transition-duration: 150ms;
 }
@@ -53,9 +62,16 @@ button {
 
 button:hover {
   background: #ce7800;
+  background: hsl(35, 93%, 56%);
   transition: ease;
   transition-duration: 150ms;
 }
+
+#top-results {
+  margin: 5vh auto;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 0px 0px 10px #f2f2f2;}
 
 ul {
   display: flex;
@@ -72,35 +88,37 @@ li {
 }
 
 .book {
-  max-width: 550px;
+  max-width: 400px;
+  width: 400px;
   height: 210px;
   height: 175px;
-  /* min-height: 225px; */
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
   margin: 18px auto;
+  position: relative;
   border-radius: 25px;
   border-right: none;
   border-left: none;
-  background: #efefef;
+  /* background: hsl(30, 15%, 92%); */
+  background: hsl(0, 0%, 94%);
+  background: hsl(0, 0%, 96%);
   overflow: hidden;
-  transition: .15s ease;
-}
-
-.book:hover {
-  background: #D2D2D2;
-  background: #e4e9da;
-  /* border-color: #6e991f; */
+  margin: 20px auto;
+  margin-top: 0;
+  /* border: 3px solid #dadada; */
   transition: 150ms ease;
 }
 
-.book:hover .info {
-  width: 400px;
-  /* position: absolute; */
-  /* padding: 20px 0; */
-  transition: 500ms ease;
+.book:hover {
+  border-color: #6e991f;
+  border-color: #E88B08;
+  transition: 150ms ease;
+}
 
+.book:hover .info, .book {
+  width: 400px;
+  transition: 500ms ease;
 }
 
 a {
@@ -108,25 +126,28 @@ a {
   color: initial;
 }
 
-img {
-  /* margin-left: 32px; */
-}
-
-img.blank {
+.blank {
+  width: 128px;
   min-width: 128px;
   height: 100%;
-  background-color: #E88B08;
+  margin: auto;
+  background: #fff;
+  background-image: url("dn-charge.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+  
 }
 
 .info:hover {
   opacity: 1;
-
   border-color: #6e991f;
+  background: hsl(0, 0%, 94%);
+
 }
 
 .info {
-  /* width: 100%; */
-  /* width: 0px; */
   width: 400px;
   opacity: 0;
   height: 175px;
@@ -134,8 +155,6 @@ img.blank {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  top: 20px;
-  left: 20px;
   border-radius: 25px;
   padding: 20px 10px;
   overflow: hidden;
@@ -147,9 +166,19 @@ h2 {
   max-width: 350px;
   min-width: 200px;
   color: #6e991f;
-  margin: 0 auto;
+  margin: auto;
+  padding: 0 10px;
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
+}
+
+.info h2, .info h3, .info p {
+  color: #E88B08;
+  text-align: center;
+}
+
+.info h2 {
+  margin-top: 0;
 }
 
 h3 {
@@ -157,6 +186,7 @@ h3 {
 }
 
 h3, p {
+  margin: 0;
   color: #747474;
   font-size: 1rem;
 }
@@ -166,14 +196,26 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
+
+  input, button {
+    padding: 22px 42px;
+    font-size: 1.75rem;
+  }
+
   .book {
-    width: 400px;
+    /* width: 400px; */
     margin: 20px;
-    border: 3px solid #dadada;
+    margin-top: 0;
+    /* border: 3px solid #dadada; */
+    border: 3px solid hsl(0, 0%, 96%);
     /* box-shadow: 0 0 10px #acb1a5; */
   }
 
   li {
     width: initial;
+  }
+
+  h2 {
+    font-size: 1.25rem;
   }
 }
