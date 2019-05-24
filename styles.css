@@ -8,12 +8,8 @@
 
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
   background: hsl(36, 16%, 94%);
-  background-image: url(funky-lines.png);
-  background-image: url(school.png);
-  /* background-blend-mode: overlay; */
-  background-blend-mode: exclusion;
+  background-image: url(school.png) ;
   background-blend-mode: luminosity;
 }
 
@@ -25,7 +21,7 @@ body, input, button {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30vh;
+  margin-top: 20vh;
 }
 
 input, button {
@@ -33,7 +29,6 @@ input, button {
   padding: 12px 26px;
   font-size: 1.1rem;
   outline: none;
-  /* border: 3px solid #dadada; */
 }
 
 input {
@@ -61,13 +56,13 @@ button {
 }
 
 button:hover {
-  background: #ce7800;
   background: hsl(35, 93%, 56%);
   transition: ease;
   transition-duration: 150ms;
 }
 
-#top-results {
+.top-results {
+  width: 100%;
   margin: 5vh auto;
   font-size: 1.5rem;
   text-align: center;
@@ -95,23 +90,17 @@ li {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin: 18px auto;
   position: relative;
-  border-radius: 25px;
-  border-right: none;
-  border-left: none;
-  /* background: hsl(30, 15%, 92%); */
-  background: hsl(0, 0%, 94%);
-  background: hsl(0, 0%, 96%);
-  overflow: hidden;
   margin: 20px auto;
   margin-top: 0;
-  /* border: 3px solid #dadada; */
+  border: 3px solid hsl(0, 0%, 96%);
+  border-radius: 25px;
+  background: hsl(0, 0%, 96%);
+  overflow: hidden;
   transition: 150ms ease;
 }
 
 .book:hover {
-  border-color: #6e991f;
   border-color: #E88B08;
   transition: 150ms ease;
 }
@@ -130,22 +119,13 @@ a {
   width: 128px;
   min-width: 128px;
   height: 100%;
-  margin: auto;
   background: #fff;
   background-image: url("dn-charge.png");
-  background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-clip: content-box;
-  
-}
+  background-position: center;
+  }
 
-.info:hover {
-  opacity: 1;
-  border-color: #6e991f;
-  background: hsl(0, 0%, 94%);
-
-}
 
 .info {
   width: 400px;
@@ -155,21 +135,26 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
   border-radius: 25px;
   padding: 20px 10px;
   overflow: hidden;
-  position: absolute;
   background: #e4e9da;
+}
+
+.info:hover {
+  opacity: 1;
+  background: hsl(0, 0%, 94%);
 }
 
 h2 {
   max-width: 350px;
   min-width: 200px;
-  color: #6e991f;
   margin: auto;
   padding: 0 10px;
-  text-align: center;
+  color: #6e991f;
   font-size: 1rem;
+  text-align: center;
 }
 
 .info h2, .info h3, .info p {
@@ -203,12 +188,8 @@ p {
   }
 
   .book {
-    /* width: 400px; */
     margin: 20px;
     margin-top: 0;
-    /* border: 3px solid #dadada; */
-    border: 3px solid hsl(0, 0%, 96%);
-    /* box-shadow: 0 0 10px #acb1a5; */
   }
 
   li {

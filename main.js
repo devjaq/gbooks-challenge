@@ -11,14 +11,13 @@ function searchForBooks(term) {
   if (document.getElementById('top-results')) {
 
   } else {
-    topResults = document.createElement('p');
-    topResults.id = 'top-results';
+    // topResults = document.createElement('p');
+    // topResults.id = 'top-results';
   }
 
-  resultsArea.prepend(topResults);
+  // resultsArea.prepend(topResults);
 
   let searchBox = document.getElementById('search-bar');
-
   if (searchBox.value === "" || searchBox.value === undefined) {
     if (term === undefined) {
       term = randomFirstTopic();
@@ -37,7 +36,7 @@ function searchForBooks(term) {
       })
       .then(function (myJson) {
         searchResults = myJson;
-        render(searchResults);
+        render(searchResults, term);
         topResults.innerText = `Top ${searchResults.items.length} results for "${term}".`;
       });
   } else {
@@ -49,7 +48,7 @@ function searchForBooks(term) {
       })
       .then(function (myJson) {
         searchResults = myJson;
-        render(searchResults);
+        render(searchResults, searchBox.value);
         topResults.innerText = `Top ${searchResults.items.length} results for "${searchBox.value}".`;
       });
   }
@@ -70,28 +69,21 @@ const keypress = (event) => {
 }
 
 // Generate HTML and sets #results's contents to it
-function render(searchResults) {
+function render(searchResults, searchTerm) {
   let resultsItem;
   let bookData = searchResults.items;
 
   // TODO display results
   let resultsList = document.getElementById('results');
 
-  ////// CLEAR OUT RESULTS LIST
-  // resultsList.innerHTML = "";
-  //////
-
   ///// Turn the book data into cards
   for (let i = 0; i < bookData.length; i++) {
-    // console.log(bookData[i]);
-    // console.log(bookData[1].id);
-
     if (document.getElementById(bookData[i].id)) {
-      //// delete old card, create new one
       document.getElementById(bookData[i].id).outerHTML = "";
-
     } 
-    // else {
+
+    
+      ////// Create a new card and info overlay
       resultsItem = document.createElement('li');
       resultsCard = document.createElement('section');
       resultsCard.classList.add('book');
@@ -99,11 +91,10 @@ function render(searchResults) {
       cardInfo = document.createElement('div');
       cardInfo.classList.add('info');
       resultsCard.appendChild(cardInfo);
-
+      
       //// Create all sub elements for card
       cardImage = document.createElement('img');
       if (bookData[i].volumeInfo.imageLinks) {
-        // cardImage = document.createElement('div');
         cardImage.src = bookData[i].volumeInfo.imageLinks.thumbnail;
         cardImage.style.backgroundImage = `url(${bookData[i].volumeInfo.imageLinks.thumbnail})`;
         resultsCard.style.height = bookData[i].volumeInfo.imageLinks.thumbnail.height;
@@ -117,17 +108,17 @@ function render(searchResults) {
       cardTitle = document.createElement('h2');
       cardTitle.innerText = bookData[i].volumeInfo.title.toUpperCase();
 
-      cardSubtitle = document.createElement('h3');
+      cardInfoSubtitle = document.createElement('h3');
       if (bookData[i].volumeInfo.subtitle === undefined) {
-        cardSubtitle.innerText = "";
+        cardInfoSubtitle.innerText = "";
       } else {
-        cardSubtitle.innerText = bookData[i].volumeInfo.subtitle;
+        cardInfoSubtitle.innerText = bookData[i].volumeInfo.subtitle;
       }
-      cardAuthors = document.createElement('p');
+      cardInfoAuthors = document.createElement('p');
       if (bookData[i].volumeInfo.authors === undefined) {
-        cardAuthors.innerText = "Author: N/A";
+        cardInfoAuthors.innerText = "Author information not available";
       } else {
-        cardAuthors.innerText = bookData[i].volumeInfo.authors;
+        cardInfoAuthors.innerText = bookData[i].volumeInfo.authors;
       }
       cardLink = document.createElement('a');
       cardLink.href = bookData[i].volumeInfo.infoLink;
@@ -137,12 +128,18 @@ function render(searchResults) {
       resultsCard.appendChild(cardTitle);
       resultsCard.appendChild(cardImage);
       cardInfo.appendChild(cardInfoTitle);
-      cardInfo.appendChild(cardSubtitle);
-      cardInfo.appendChild(cardAuthors);
+      cardInfo.appendChild(cardInfoSubtitle);
+      cardInfo.appendChild(cardInfoAuthors);
       resultsItem.appendChild(cardLink);
       resultsList.prepend(resultsItem);
-    // }
   }
+  if (document.getElementById(`top-results-${searchTerm}`)) {
+    document.getElementById(`top-results-${searchTerm}`).outerHTML = "";
+  } 
+  topResults = document.createElement('p');
+  topResults.id = `top-results-${searchTerm}`;
+  topResults.classList.add('top-results');
+  resultsList.prepend(topResults);
 }
 
 function focusEffect() {
@@ -157,7 +154,7 @@ function blurEffect() {
 
 const randomFirstTopic = () => {
   let topics = [
-    "doctor", "networking", "health", "record", "school", "nursing", "camp"
+    "doctor", "network", "health", "record", "school", "child care", "camp"
   ]
   return topics[Math.floor(Math.random() * topics.length)];
 }
